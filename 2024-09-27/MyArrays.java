@@ -1,6 +1,5 @@
 public class MyArrays{
   public static void main(String[] args){
-      System.out.println(aryToString(new int[]{1,2,3,4}));
   }
   public static String aryToString(int[] nums){
     String result = "[";
@@ -20,7 +19,17 @@ public class MyArrays{
     return ary2;
   }
   public static int[] concatArray(int[]ary1,int[]ary2){
-    return new int[0];
+    int[] concated = new int[ary1.length + ary2.length];
+    int i = 0;
+    while (i < ary1.length){
+      concated[i] = ary1[i];
+      i++;
+    }
+    for (int j = 0; j < ary2.length; j++){
+      concated[i] = ary2[j];
+      i++;
+    }
+    return concated;
 
   }
 }
