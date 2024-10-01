@@ -51,6 +51,26 @@ public class ArrayMethods{
         }
         return result;
     }
+    public static void replaceNegative(int[][] vals){
+      for (int i = 0; i < vals.length; i++){
+        for (int j = 0; i < vals[i],length; j++){
+          if (vals[i][j] < 0){
+            if (i == j){
+              vals[i][j] = 1;
+            }
+            else{
+              vals[i][j] =0;
+            }
+          }
+        }
+      }
+    }
+    public static int[][] copy(int[][] nums){
+      int[][] result = new int[nums.length][];
+    }
+    public static int[][] copyHelper(int[][] nums){
+      
+    }
     public static void main(String[] args){
         int[][] testArr= {{1,2,3},{0,0,0},{1,1,1,1,1}};
         System.out.println("Expected = " + "[[1, 2, 3], [0, 0, 0], [1, 1, 1, 1, 1]]" + "Result = " +arrToString(testArr));
