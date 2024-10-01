@@ -50,11 +50,11 @@ public class ArrayMethods{
         System.out.println("Expected = " + 21 + "Result = " + arr2Dsum(testArr2));
         int[][] testArr3 = {{2,3,4}, {5,6,7}, {2,4,9}};
         System.out.println("Expected = " + "[[2, 3, 4], [5, 6, 7], [2, 4, 9]]" + "Result = " +arrToString(testArr3));
-        System.out.println("Expected = " + 21 + "Result = " + arr2Dsum(testArr3));
+        System.out.println("Expected = " + 42 + "Result = " + arr2Dsum(testArr3));
         //Start of swapRC tests
-        System.out.prinln("Expected = " + "[[1, 2], [3, 4], [5, 6]]" + "Result = " + arrToString(swapRC(testArr2)));
-        System.out.prinln("Expected = " + "[[2, 3, 4], [5, 6, 7], [2, 4, 9]]" + "Result = " + arrToString(swapRC(testArr3)));
+        System.out.println("Expected = " + "[[1, 2], [3, 4], [5, 6]]" + "Result = " + arrToString(swapRC(testArr2)));
+        System.out.println("Expected = " + "[[2, 3, 4], [5, 6, 7], [2, 4, 9]]" + "Result = " + arrToString(swapRC(testArr3)));
         int[][] testArr4 = {{1,2}, {78,988}, {12,30}, {0,0}, {1111, 99}, {40, 27}};
-        System.out.prinln("Expected = " + "[[1, 2, 78, 988, 12, 30], [0, 0, 1111, 99, 40, 27]]" + "Result = " + arrToString(swapRC(testArr2)));
+        System.out.println("Expected = " + "[[1, 2, 78, 988, 12, 30], [0, 0, 1111, 99, 40, 27]]" + "Result = " + arrToString(swapRC(testArr2)));
     }
 }
