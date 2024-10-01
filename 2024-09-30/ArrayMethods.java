@@ -1,6 +1,6 @@
 //Nathan Lam, Jerry Jiang, nathanl74@nycstudents.net, jerryj36@nycstudents.net
 public class ArrayMethods{
-    public static String arrToString(int[][] nums){
+    public static String arrToString(int[] nums){
         String str = "[";
         for (int idx = 0; idx < nums.length; idx++){
             str += nums[idx];
@@ -9,6 +9,25 @@ public class ArrayMethods{
             }
         }
         return (str+"]");
+    }
+    public static String arrToString(int[][] ary){
+        String str = "[";
+        for (int i = 0; i < ary.length; i++){
+            str += arrToString(ary[i]);
+            if (i < ary.length - 1){
+                str += ", ";
+            }
+        }
+        return (str+"]");
+    }
+    public static int arr2Dsum(int[][] nums){
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++){
+            for (int j = 0; j < nums[i].length; j++) {
+                sum += nums[i][j];
+            }
+        }
+        return sum;
     }
     public static void main(String[] args){
         int[][] testArr= {{1,2,3},{0,0,0},{1,1,1,1,1}};
