@@ -29,6 +29,15 @@ public class ArrayMethods{
         }
         return sum;
     }
+    public static int[][] swapRC(int[][] nums){
+        int[][] result = new int[nums[0].length][nums.length];
+        for (int i = 0; i < nums.length; i++){
+            for (int j = 0; j < nums[i].length; j++){
+                result[j][i] = nums[i][j];
+            }
+        }
+        return result;
+    }
     public static void main(String[] args){
         int[][] testArr= {{1,2,3},{0,0,0},{1,1,1,1,1}};
         System.out.println("Expected = " + "[[1, 2, 3], [0, 0, 0], [1, 1, 1, 1, 1]]" + "Result = " +arrToString(testArr));
