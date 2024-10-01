@@ -31,9 +31,22 @@ public class ArrayMethods{
     }
     public static int[][] swapRC(int[][] nums){
         int[][] result = new int[nums[0].length][nums.length];
+        int row = 0;
+        int col = 0;
+        int[] values = new int[nums[0].length * nums.length];
+        int idx = 0;
         for (int i = 0; i < nums.length; i++){
             for (int j = 0; j < nums[i].length; j++){
-                result[j][i] = nums[i][j];
+                values[idx] = nums[i][j];
+                idx++;
+            }
+        }
+        for (int i = 0; i < values.length; i++){
+            result[row][col] = values[i];
+            col++;
+            if (col == nums.length){
+                col = 0;
+                row++;
             }
         }
         return result;
@@ -55,6 +68,6 @@ public class ArrayMethods{
         System.out.println("Expected = " + "[[1, 2], [3, 4], [5, 6]]" + "Result = " + arrToString(swapRC(testArr2)));
         System.out.println("Expected = " + "[[2, 3, 4], [5, 6, 7], [2, 4, 9]]" + "Result = " + arrToString(swapRC(testArr3)));
         int[][] testArr4 = {{1,2}, {78,988}, {12,30}, {0,0}, {1111, 99}, {40, 27}};
-        System.out.println("Expected = " + "[[1, 2, 78, 988, 12, 30], [0, 0, 1111, 99, 40, 27]]" + "Result = " + arrToString(swapRC(testArr2)));
+        System.out.println("Expected = " + "[[1, 2, 78, 988, 12, 30], [0, 0, 1111, 99, 40, 27]]" + "Result = " + arrToString(swapRC(testArr4)));
     }
 }
