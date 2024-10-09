@@ -26,19 +26,19 @@ public class ArrayDemo{
     System.out.println("\nStart of htmlTable tests");
     String table4 = "<table><tr><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td></tr></table>";
     System.out.println("Expected = " + table4 + " Returned = " + htmlTable(arr4));
-    System.out.println("Are the Strings equal" + table4.equals(htmlTable(arr4)));
-    String table5 = "<table></table>";
+    System.out.println("Are the Strings equal " + table4.equals(htmlTable(arr4)));
+    String table5 = "<table><tr></tr><tr></tr></table>";
     System.out.println("Expected = " + table5 + " Returned = " + htmlTable(arr5));
-    System.out.println("Are the Strings equal" + table5.equals(htmlTable(arr5)));
+    System.out.println("Are the Strings equal " + table5.equals(htmlTable(arr5)));
     String table6 = "<table><tr><td>0</td></tr><tr><td>1</td><td>2</td><td>3</td></tr></table>";
     System.out.println("Expected = " + table6 + " Returned = " + htmlTable(arr6));
-    System.out.println("Are the Strings equal" + table6.equals(htmlTable(arr6)));
+    System.out.println("Are the Strings equal " + table6.equals(htmlTable(arr6)));
     String table7 = "<table><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>";
     System.out.println("Expected = " + table7 + " Returned = " + htmlTable(arr7));
-    System.out.println("Are the Strings equal" + table7.equals(htmlTable(arr7)));
+    System.out.println("Are the Strings equal " + table7.equals(htmlTable(arr7)));
     String table8 = "<table><tr><td>0</td></tr><tr><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td></tr></table>";
     System.out.println("Expected = " + table8 + " Returned = " + htmlTable(arr8));
-    System.out.println("Are the Strings equal" + table8.equals(htmlTable(arr8)));
+    System.out.println("Are the Strings equal " + table8.equals(htmlTable(arr8)));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
