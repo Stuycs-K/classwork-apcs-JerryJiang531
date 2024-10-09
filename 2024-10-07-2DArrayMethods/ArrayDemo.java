@@ -5,7 +5,40 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
-
+    System.out.println("\nStart of arrToString tests");
+    int[] arr1 = {1,2,3,4};
+    int[] arr2 = {};
+    int[] arr3 = {0,0,0,7,7,7};
+    System.out.println("Expected = " + Arrays.toString(arr1) + " Returned = " + arrToString(arr1));
+    System.out.println("Expected = " + Arrays.toString(arr2) + " Returned = " + arrToString(arr2));
+    System.out.println("Expected = " + Arrays.toString(arr3) + " Returned = " + arrToString(arr3));
+    System.out.println("\nStart of countZeros2D tests");
+    int[][] arr4 = {{1,2,3}, {4,5,6}};
+    System.out.println("Expected " + 0 + " Returned = " + countZeros2D(arr4));
+    int[][] arr5 = {{},{}};
+    System.out.println("Expected = " + 0 + " Returned = " + countZeros2D(arr5));
+    int[][] arr6 = {{0}, {1,2,3}};
+    System.out.println("Expected = " + 1 + " Returned = " + countZeros2D(arr6));
+    int[][] arr7 = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
+    System.out.println("Expected = " + 12 + " Returned = " + countZeros2D(arr7));
+    int[][] arr8 = {{0}, {0,0}, {0,0,0}};
+    System.out.println("Expected = " + 6 + " Returned = " + countZeros2D(arr8));
+    System.out.println("\nStart of htmlTable tests");
+    String table4 = "<table><tr><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td></tr></table>";
+    System.out.println("Expected = " + table4 + " Returned = " + htmlTable(arr4));
+    System.out.println("Are the Strings equal" + table4.equals(htmlTable(arr4)));
+    String table5 = "<table></table>";
+    System.out.println("Expected = " + table5 + " Returned = " + htmlTable(arr5));
+    System.out.println("Are the Strings equal" + table5.equals(htmlTable(arr5)));
+    String table6 = "<table><tr><td>0</td></tr><tr><td>1</td><td>2</td><td>3</td></tr></table>";
+    System.out.println("Expected = " + table6 + " Returned = " + htmlTable(arr6));
+    System.out.println("Are the Strings equal" + table6.equals(htmlTable(arr6)));
+    String table7 = "<table><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>";
+    System.out.println("Expected = " + table7 + " Returned = " + htmlTable(arr7));
+    System.out.println("Are the Strings equal" + table7.equals(htmlTable(arr7)));
+    String table8 = "<table><tr><td>0</td></tr><tr><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td></tr></table>";
+    System.out.println("Expected = " + table8 + " Returned = " + htmlTable(arr8));
+    System.out.println("Are the Strings equal" + table8.equals(htmlTable(arr8)));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -38,7 +71,7 @@ public class ArrayDemo{
   public static int countZeros2D(int[][] nums){
     int count = 0;
     for (int i = 0; i < nums.length; i++){
-      for (int j = 0; i < nums[i].length; i++){
+      for (int j = 0; j < nums[i].length; j++){
         if (nums[i][j] == 0){
           count++;
         }
