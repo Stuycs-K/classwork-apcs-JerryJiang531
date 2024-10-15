@@ -5,7 +5,11 @@ public class Demo{
   to the others.
   */
   public static double distance(Point a, Point b){
-    return 0.0;
+    double result;
+    double temp1 = Math.pow(a.getX() - b.getX(), 2);
+    double temp2 = Math.pow(a.getY() - b.getY(), 2);
+    result = Math.sqrt(temp1 + temp2);
+    return result;
   }
 
   public static void main(String[]args){
