@@ -14,8 +14,8 @@ public class Point{
   }
 
   //Initialize this Point to have the provided values
-  public Point(double x, double Y){
-    this,x=x;
+  public Point(double x, double y){
+    this.x=x;
     this.y=y;
   }
   public double getX(){
@@ -29,7 +29,9 @@ public class Point{
   Write this method FOURTH, go to the main and do that one first.
   */
   public double distanceTo(Point other){
-    return 0.0;
+    otherX = other.getX();
+    otherY = other.getY();
+    return Math.sqrt(Math.pow(otherX - x, 2) + Math.pow(otherY -y, 2));
   }
 
   /*
