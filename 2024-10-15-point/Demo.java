@@ -34,6 +34,12 @@ public class Demo{
     System.out.println( distance(p4,p3));
     System.out.println( Point.distance(p4,p3));
     System.out.println( p4.distanceTo(p3));
-
+    Point triP1 = new Point(0,0);
+    Point triP2 = new Point(1,0);
+    double d1 = distance(triP1,triP2);
+    Point triP3 = new Point(triP1.getX() + d1/2, triP2.getY() + d1 *Math.sqrt(3)/2);
+    System.out.println(distance(triP1,triP2));
+    System.out.println(distance(triP1,triP3));
+    System.out.println(distance(triP2,triP3));
   }
 }
