@@ -4,14 +4,23 @@ import java.util.Scanner;
 
 public class TriangleTester{
   public static void main(String[] args){
-    System.out.println(isTriangle("3 4 5"));
+    System.out.println(countTrianglesA("inputTri.txt"));
   }
   public static int countTrianglesA(String filename){
-    // File file = new File(filename);//1
-    //   // Scanner input = new Scanner(file);
-    //   //CODE THAT SCANS THE FILE.
-    //   input.close();
-    return 0;
+    int sum = 0;
+    try{
+    File file = new File(filename);//1
+      Scanner input = new Scanner(file);
+      while (input.hasNextLine()){
+        if (isTriangle(input.nextLine())){
+          sum ++;
+        }
+      }
+      input.close();
+    }catch (FileNotFoundException ex) {
+      System.out.println("File not found");
+    }
+    return sum;
 
   }
   public static boolean isTriangle(String line){
