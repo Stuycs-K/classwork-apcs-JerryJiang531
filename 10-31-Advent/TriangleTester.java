@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TriangleTester{
   public static void main(String[] args){
+    System.out.println(countTrianglesA("inputTri.txt"));
     System.out.println(countTrianglesB("inputTri.txt"));
   }
   public static int countTrianglesA(String filename){
