@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TriangleTester{
   public static void main(String[] args){
     System.out.println(countTrianglesA("inputTri.txt"));
+    System.out.println(countTrianglesB("inputTri.txt"));
   }
   public static int countTrianglesA(String filename){
     int sum = 0;
@@ -28,6 +29,7 @@ public class TriangleTester{
     int a = sc.nextInt();
     int b = sc.nextInt();
     int c = sc.nextInt();
+    sc.close();
     return (a + b > c) && (a +c > b) && (b+c > a);
   }
   public static int countTrianglesB(String filename){
@@ -35,21 +37,24 @@ public class TriangleTester{
     try{
       File file = new File(filename);//1
       Scanner input = new Scanner(file);
-      String a = "";
-      while (input.hasNextLine()){
-        String temp1 = input.nextLine();
-        String temp2 = input.nextLine();
-        String temp3 = input.nextLine();
-        for (int j = 0; j < 3; j++){
-          a += temp1.nextInt();
-          a += temp2.nextInt();
-          a += temp3.nextInt();
-        }
-        if (isTriangle(a)){
-          sum ++;
-        }
-      }
 
+      while (input.hasNextLine()){
+          String a = "";
+          String[][] arr = new String[3][3];
+          for (int i = 0; i < 3; i ++){
+            arr[i][0] = input.next();
+            arr[i][1] = input.next();
+            arr[i][2] = input.next();
+          }
+          for (int k = 0; k < 3; k ++){
+            a += arr[0][k] + " " + arr[1][k] + " " + arr[2][k];
+            if (isTriangle(a)) {
+              sum++;
+            }
+            a = "";
+          }
+
+      }
       input.close();
     }catch (FileNotFoundException ex) {
       System.out.println("File not found");
