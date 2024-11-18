@@ -5,8 +5,7 @@ public class day1{
   public static void main(String[] args){
     System.out.println(solve("input.txt"));
   }
-  public static int solve(filename){
-    int result = 0;
+  public static int solve(String filename){
     int x = 0;
     int y = 0;
     String[] arr = {"North", "East", "South", "West"};
@@ -17,20 +16,28 @@ public class day1{
     Scanner input = new Scanner(file);
     while (input.hasNext()){
       String a = input.next();
-      int move = Integer.parseInt(a.substring(1, 2);
-      if ((a.substring(0,1).equals("R")){
+      System.out.println(a);
+      int move;
+      if (a.length() >= 3){
+        move = Integer.parseInt(a.substring(1, a.length()-1));
+      } else{
+        move = Integer.parseInt((a.substring(1, 2)));
+      }
+      System.out.println(move);
+      if ((a.substring(0,1).equals("R"))){
         if (facingIndex == 3){
           facingIndex = 0;
         }else{
           facingIndex += 1;
         }
         facing = arr[facingIndex];
-      }else if (a.substring(0,1).equals("L"){
+      }else if (a.substring(0,1).equals("L")){
         if (facingIndex == 0){
           facingIndex = 3;
         }else{
           facingIndex -= 1;
         }
+        facing = arr[facingIndex];
       }
       if (facing.equals("North")){
         y += move;
@@ -46,6 +53,6 @@ public class day1{
   }catch(FileNotFoundException ex) {
       System.out.println("File not found");
     }
-    return x + y;
+    return Math.abs(x) + Math.abs(y);
   }
 }
