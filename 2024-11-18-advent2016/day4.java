@@ -15,6 +15,20 @@ public class day4{ // replace with correct day
                 String checksum = getCheckSum(line);
                 int ID = getID(line);
                 String name = getName(line);
+                char[] top5 = new char[5];
+                int[] top5Int = new int[5];
+                boolean isDecoy = true;
+                for (int i = 0; i < name.length(); i++){
+                  
+                }
+                for (int j = 0; j < top5.length; j++){
+                  if (top5[j] != checksum.charAt[j]){
+                    isDecoy = false;
+                  }
+                }
+                if (isDecoy){
+                  sum += ID;
+                }
             }
         }catch (FileNotFoundException e) {
             System.out.println("File not found");
