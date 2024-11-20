@@ -23,15 +23,21 @@ public class day4{ // replace with correct day
     }
     public static int part1(String[] data){// replace with correct return type
         int sum = 0;
+        boolean isNotDecoy = true;
         for (int i = 0; i < data.length; i++){
             int ID = getID(data[i]);
             String name = getName(data[i]);
             String[] checkSum = getCheckSum(data[i]);
             String[] top = most(data[i]);
+            System.out.println(data[i]);
+            System.out.println("name = " + name + " ID = " + ID + " checkSum = " + Arrays.toString(checkSum) +" top = " + Arrays.toString(top));
             for (int j = 0; j < 5; j++){
-                if (checkSum[j].equals(top[j])){
-                    sum += ID;
+                if (checkSum[j].charAt(0) != top[j].charAt(0)){
+                    isNotDecoy = false;
                 }
+            }
+            if (isNotDecoy){
+                sum += ID;
             }
         }
         return sum;
@@ -52,7 +58,7 @@ public class day4{ // replace with correct day
             String temp = "";
             for (int i = 0; i < a.length(); i++){
                 for (int j = 0; j < alphabet.length; j++){
-                    if (a.charAt(i) == alphabet[j]){
+                    if (a.charAt(i) == alphabet[j] && a.charAt(i) != '-'){
                         count[j]++;
                     }
                 }
@@ -87,7 +93,7 @@ public class day4{ // replace with correct day
         return res;
     }
     public static String[] getCheckSum(String a){
-        String check = a.substring(a.indexOf("["), a.length()-1);
+        String check = a.substring(a.indexOf("[") + 1, a.length()-1);
         String[] res = new String[5];
         for (int i = 0; i < res.length; i ++){
             res[i] = "" + check.charAt(i);
