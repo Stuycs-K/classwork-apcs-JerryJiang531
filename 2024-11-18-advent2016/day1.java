@@ -71,12 +71,11 @@ public class day1{
   public static int part2(String[] arr){
     int x = 0;
     int y = 0;
-    int[][] dir = {{1,0}, {0,1}, {-1, 0}, {0,-1}};
+    int[][] dir = {{0, 1}, {1,0}, {0, -1}, {-1,0}};
     int facing = 0;
-    int[][] coords = new int[arr.length][2];
+    ArrayList<int[]> coords = new ArrayList<int[]>();
+    coords.add(new int[]{0,0});
     for (int i = 0; i < arr.length; i++){
-      coords[i][0] = x;
-      coords[i][1] = y;
       int move = Integer.parseInt(arr[i].substring(1));
       if (arr[i].charAt(0) == 'R'){
         facing += 1;
@@ -84,18 +83,22 @@ public class day1{
         facing -= 1;
       }
       facing = ((facing +4) % 4);
-      x += dir[facing][0] * move;
-      y += dir[facing][1] * move;
-    }
-    for (int j = 0; j < coords.length; j++){
-      for (int k = 0; k < coords.length; k++){
-        if (j != k) {
-          if (coords[j][0] == coords[k][0] && coords[j][1] == coords[k][1]){
-            return Math.abs(coords[j][0]) + Math.abs(coords[j][1]);
+      for (int j = 0; j < move; j++) {
+        x += dir[facing][0];
+        y += dir[facing][1];
+        for (int k = 0; k < coords.size(); k++){
+          int[] temp = coords.get(k);
+          for (int l = k + 1; l < coords.size(); l++){
+            int[] temp2 = coords.get(l);
+            if (temp[0] == temp2[0] && temp[1] == temp2[1]){
+              return Math.abs(temp[0]) + Math.abs(temp[1]);
+            }
           }
         }
+        coords.add(new int[]{x,y});
       }
     }
+
     return 0;
   }
 }
