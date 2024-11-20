@@ -4,7 +4,7 @@ import java.util.*;
 public class day4{ // replace with correct day
     public static void main(String[] args){
         String[] data = parseStringArr("inputDay4.txt"); // replace with correct day
-        System.out.println(part1(data)); // replace with correct day
+        System.out.println(part2(data)); // replace with correct day
     }
     public static String[] parseStringArr(String filename){
         try {
@@ -41,6 +41,14 @@ public class day4{ // replace with correct day
             }
         }
         return sum;
+    }
+    public static int part2(String[] data){
+      for (int i = 0; i < data.length; i++){
+        int ID = getID(data[i]);
+        String name = getName(data[i]);
+        System.out.println(cypher(name, ID));
+      }
+      return 0;
     }
     public static String[] most(String a){
         char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
@@ -105,5 +113,19 @@ public class day4{ // replace with correct day
     }
     public static String getName(String a){
         return a.substring(0, a.lastIndexOf("-"));
+    }
+    public static String cypher(String a, int shift){
+      char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+      String res = "";
+      for (int i = 0; i < a.length(); i++){
+        int index = 0;
+        for (int j = 0; j < alphabet.length; j ++){
+          if (a.charAt(j) == alphabet[j]){
+            index = j;
+          }
+        }
+        res += alphabet[((index + shift) % 26)] + "";
+      }
+      return res;
     }
 }
