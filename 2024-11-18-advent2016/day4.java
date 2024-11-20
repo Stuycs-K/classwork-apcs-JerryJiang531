@@ -23,8 +23,8 @@ public class day4{ // replace with correct day
     }
     public static int part1(String[] data){// replace with correct return type
         int sum = 0;
-        boolean isNotDecoy = true;
         for (int i = 0; i < data.length; i++){
+            boolean isNotDecoy = true;
             int ID = getID(data[i]);
             String name = getName(data[i]);
             String[] checkSum = getCheckSum(data[i]);
