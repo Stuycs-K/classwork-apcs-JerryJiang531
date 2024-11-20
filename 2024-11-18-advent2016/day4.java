@@ -3,40 +3,96 @@ import java.io.FileNotFoundException;
 import java.util.*;
 public class day4{ // replace with correct day
     public static void main(String[] args){
-        System.out.println(part1("inputDay4.txt")); // replace with correct day
+        String[] data = parseStringArr("inputDay4.txt"); // replace with correct day
+        System.out.println(part1(data)); // replace with correct day
     }
-    public static int part1(String filename){// replace with correct return type
-        int sum = 0;
+    public static String[] parseStringArr(String filename){
         try {
             File file = new File(filename);
             Scanner input = new Scanner(file);
-            while (input.hasNextLine()){ // sometimes "hasNextLine()"
-                String line = input.nextLine();
-                String checksum = getCheckSum(line);
-                int ID = getID(line);
-                String name = getName(line);
-                char[] top5 = new char[5];
-                int[] top5Int = new int[5];
-                boolean isDecoy = true;
-                for (int i = 0; i < name.length(); i++){
-                  
-                }
-                for (int j = 0; j < top5.length; j++){
-                  if (top5[j] != checksum.charAt[j]){
-                    isDecoy = false;
-                  }
-                }
-                if (isDecoy){
-                  sum += ID;
-                }
+            String a = "";
+            while (input.hasNextLine()){
+                a += input.nextLine() + "\n";
             }
+            String[] data = a.split("\n"); // replace with correct split parameter
+            return data;
         }catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+        return null;
+    }
+    public static int part1(String[] data){// replace with correct return type
+        int sum = 0;
+        for (int i = 0; i < data.length; i++){
+            int ID = getID(data[i]);
+            String name = getName(data[i]);
+            String[] checkSum = getCheckSum(data[i]);
+            String[] top = most(data[i]);
+            for (int j = 0; j < 5; j++){
+                if (checkSum[j].equals(top[j])){
+                    sum += ID;
+                }
+            }
+        }
         return sum;
     }
-    public static String getCheckSum(String a){
-        return a.substring(a.indexOf("["), a.length()-1);
+    public static String[] most(String a){
+        char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        String[] res = new String[5];
+        int[] top5 = new int[5];
+
+        int index = 0;
+        for (int i = 0; i < 5; i++){
+            res[i] = "";
+        }
+        while (res[4].equals("")) {
+            int[] count = new int[26];
+            int max = 0;
+            int maxIndex = 0;
+            String temp = "";
+            for (int i = 0; i < a.length(); i++){
+                for (int j = 0; j < alphabet.length; j++){
+                    if (a.charAt(i) == alphabet[j]){
+                        count[j]++;
+                    }
+                }
+            }
+            for (int i = 0; i < count.length; i++) {
+                if (count[i] > max) {
+                    max = count[i];
+                    maxIndex = i;
+                }
+            }
+            res[index] = alphabet[maxIndex] + "";
+            top5[index] = count[maxIndex];
+            index++;
+            for (int i = 0; i < a.length(); i++){
+                if (a.charAt(i) != alphabet[maxIndex]){
+                    temp += a.charAt(i) + "";
+                }
+            }
+            a = temp;
+        }
+        for (int i = 0 ; i < 5; i++){
+            if (i != 4) {
+                if (top5[i] == top5[i + 1]) {
+                    if (res[i].compareTo(res[i+1]) > 0){
+                        String temp = res[i];
+                        res[i] = res[i+1];
+                        res[i+1] = temp;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    public static String[] getCheckSum(String a){
+        String check = a.substring(a.indexOf("["), a.length()-1);
+        String[] res = new String[5];
+        for (int i = 0; i < res.length; i ++){
+            res[i] = "" + check.charAt(i);
+        }
+        return res;
     }
     public static int getID(String a){
         return Integer.parseInt(a.substring(a.lastIndexOf("-") +1, a.indexOf("[")));
