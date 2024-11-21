@@ -46,7 +46,7 @@ public class day4{ // replace with correct day
       for (int i = 0; i < data.length; i++){
         int ID = getID(data[i]);
         String name = getName(data[i]);
-        System.out.println(cypher(name, ID));
+        System.out.println(cypher(name, ID) + " ID =" + ID);
       }
       return 0;
     }
@@ -120,7 +120,7 @@ public class day4{ // replace with correct day
       for (int i = 0; i < a.length(); i++){
         int index = 0;
         for (int j = 0; j < alphabet.length; j ++){
-          if (a.charAt(j) == alphabet[j]){
+          if (a.charAt(i) == alphabet[j] && a.charAt(i) != '-'){
             index = j;
           }
         }
