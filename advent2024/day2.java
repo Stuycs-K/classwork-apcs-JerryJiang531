@@ -3,8 +3,7 @@ import java.util.*;
 public class day2{ // replace with correct day
     public static void main(String[] args){
         String[] data = parseStringArr("inputDay2.txt"); // replace with correct day
-        System.out.println(Arrays.toString(data));
-        System.out.println(part1(data));
+        System.out.println(part2(data));
     }
     public static String[] parseStringArr(String filename){
       try {
@@ -64,6 +63,74 @@ public class day2{ // replace with correct day
       }
       return count;
     }
+    public static boolean isSafe(int[] report){
+        int[] sorted = Arrays.copyOf(report, report.length);
+        Arrays.sort(sorted);
+        boolean skibidi = false;
+        boolean sigma = false;
+        for (int k = 0; k < report.length; k++){
+            if (report[k] == sorted[k]){
+                skibidi = true;
+            }else{
+                skibidi = false;
+                break;
+            }
+        }
+        if (!skibidi){
+            int index = 0;
+            for (int l = report.length -1;l >=0; l--){
+                if (report[index] == sorted[l]){
+                    skibidi = true;
+                }else{
+                    skibidi = false;
+                    break;
+                }
+                index ++;
+            }}
+        if (skibidi) {
+            for (int j = 1; j < report.length; j++) {
+                if (Math.abs(report[j] - report[j-1]) >= 1 && Math.abs(report[j] - report[j-1]) <= 3){
+                    sigma = true;
+                }else{
+                    sigma = false;
+                    break;
+                }
+            }
+            if (sigma){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static int part2(String[] data){
+        int count = 0;
+        for (int i = 0; i < data.length; i++) {
+            int[] report = parseIntArrString(data[i]);
+            if (isSafe(report)){
+                count++;
+            }else{
+                for (int j = 0; j < report.length; j++){
+                    int index = 0;
+                    int[] newReport = new int[report.length - 1];
+                    for (int k = 0; k < report.length -1; k++){
+
+                        if (index == j) {
+                            index++;
+                        }
+                        newReport[k] = report[index];
+                        index++;
+                    }
+                    if (isSafe(newReport)){
+                        count++;
+                        break;
+                    }
+                }
+
+            }
+        }
+        return count;
+    }
+
     public static int[] parseIntArrString(String a){
         String[] arr = a.split(" ");
         int[] result = new int[arr.length];
