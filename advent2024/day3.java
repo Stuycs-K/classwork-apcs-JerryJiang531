@@ -30,14 +30,17 @@ public class day3 { // replace with correct day
                     if (a.indexOf("(") - a.indexOf(")") <= 7){
                         a = a.substring(j);
                         j = 0;
+                        System.out.println(a);
                         try{
                             String c = a.substring(a.indexOf("(") +1,a.indexOf(")"));
+                            System.out.println(c);
                             int[] b = parseIntArrString(c);
                             sum += b[0]*b[1];
                         }catch (Exception e){
                             System.out.println("notsigma");
                         }
                     }
+
                 }
             }
         }
