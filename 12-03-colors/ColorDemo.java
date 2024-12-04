@@ -7,10 +7,10 @@ public class ColorDemo{
   public static int RED = 31;
 
   public static void main(String[] args){
-    for (int i = 0; i < 20; i++){
-      System.out.print("\u001b[" + ((int)(Math.random() *256)) + ";" + ((int)(Math.random() *256)) +";" + ((int)(Math.random() *256)) +";" +"7m");
+    for (int i = 0; i < 1000; i++){
+      System.out.print("\u001b[" + "2" + ((int)(Math.random() *256)) + ";" + ((int)(Math.random() *256)) +";" + ((int)(Math.random() *256)) +";" +"7m  ");
     }
-    System.out.println(CLEAR_SCREEN);
+    System.out.println("\u001b[0m");
   }
 
 
