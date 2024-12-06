@@ -3,8 +3,8 @@ import java.util.*;
 public class day4 { // replace with correct day
     public static void main(String[] args) {
         char[][] data = parseCharArr("inputDay4.txt"); // replace with correct day
-        System.out.println(Arrays.deepToString(data));
-        System.out.println(part1(data));
+        // System.out.println(Arrays.deepToString(data));
+        System.out.println(part2(data));
     }
 
     public static String[] parseStringArr(String filename) {
@@ -72,7 +72,7 @@ public class day4 { // replace with correct day
     }
     public static int part2(char[][] data){
         int sum = 0;
-        int[][] dir = { {1, 1}, {-1, 1}, {-1, -1}, {1,-1}};
+        int[][] dir = { {1, 1}, {-1, 1}};
         // up down left right southeast northeast northwest southwest
         // 0   1    2    3     4         5          6         7
         for (int i = 0; i < data.length; i++){
@@ -80,18 +80,34 @@ public class day4 { // replace with correct day
                 if (data[i][j] == 'A'){
                     boolean diag1 = false;
                     boolean diag2 = false;
-                    for (int k = 0; k < 2; k++) {
                         try {
-                            int yinc = dir[k][0];
-                            int xinc = dir[k][1];
+                            int yinc = dir[0][0];
+                            int xinc = dir[0][1];
+                            int yinc2 = dir[1][0];
+                            int xinc2 = dir[1][1];
                             if (data[i + yinc][j + xinc] == 'M') {
                                 if (data[i - yinc][j - xinc] == 'S') {
-                                    sum++;
+                                    diag1 = true;
                                 }
-                            }
+                              }else if (data[i + yinc][j + xinc] == 'S') {
+                                  if (data[i - yinc][j - xinc] == 'M') {
+                                      diag1 = true;
+                                  }
+                              }
+                            if (data[i + yinc2][j + xinc2] == 'M') {
+                                if (data[i - yinc2][j - xinc2] == 'S') {
+                                    diag2 = true;
+                                }
+                              }else if (data[i + yinc2][j + xinc2] == 'S') {
+                                  if (data[i - yinc2][j - xinc2] == 'M') {
+                                      diag2 = true;
+                                  }
+                              }
                         } catch (Exception e) {
                         }
-                    }
+                      if (diag1 && diag2){
+                        sum++;
+                      }
 
                 }
             }
