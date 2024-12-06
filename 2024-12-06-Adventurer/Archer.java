@@ -14,14 +14,25 @@ public class Archer extends Adventurer{
   public int getSpecialMax(){
     return specialMax;
   }
-  public String attack(Adventurer other);
+  public String attack(Adventurer other){
+    other.applyDamage(10);
+    special --;
+    return "Attacked " + other + " for 10 damage!\n" + getSpecial() + " reduced by 1";
+  }
 
   //heall or buff the target adventurer
-  public abstract String support(Adventurer other);
+  public String support(Adventurer other){
+      other.setHP(other.getHP() + 10);
+      return "Shot " + other + " with a Healing Arrow!\n" + "Healed for 10 HP";
+  }
 
   //heall or buff self
-  public abstract String support();
+  public String support();
 
   //hurt or hinder the target adventurer, consume some special resource
-  public abstract String specialAttack(Adventurer other);
+  public String specialAttack(Adventurer other){
+    other.applyDamage(100);
+    setSpecial(getSpecial() - 10);
+    return "Rapid Fire at " + other + " for 100 damage!\n" + getSpecial() +  " reduced by 10";
+  }
 }
