@@ -1,6 +1,16 @@
 public class Archer extends Adventurer{
   private int special = 0;
   private int specialMax = 50;
+  public Archer(String name){
+      super(name);
+      setSpecial(10);
+  }
+
+  public Archer(String name, int hp){
+      super(name,hp);
+      setSpecial(10);
+  }
+
   public String getSpecialName(){
     return "Ammo";
   };
@@ -16,7 +26,7 @@ public class Archer extends Adventurer{
   }
   public String attack(Adventurer other){
     other.applyDamage(10);
-    setSpecial(getSpecial - 1);
+    setSpecial(getSpecial() - 1);
     return "Attacked " + other + " for 10 damage!\n" + getSpecialName() + " reduced by 1";
   }
 
@@ -28,7 +38,7 @@ public class Archer extends Adventurer{
 
   //heall or buff self
   public String support(){
-      setSpecial(getSpecial + 3);
+      setSpecial(getSpecial() + 3);
       return "Reloaded!\n" + getSpecialName() + " increased by 3";
   }
 
