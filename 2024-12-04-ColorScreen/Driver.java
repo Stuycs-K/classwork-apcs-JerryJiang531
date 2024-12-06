@@ -26,9 +26,10 @@ public class Driver{
         System.out.println();
 
         String border = "";
-
+        String sep = "";
         for (int i = 0 ; i < 80; i++){
             border += ".";
+            sep += "*";
             for (int j = 0; j < 30; j++){
                 Text.erase(j,i,1);
             }
@@ -36,7 +37,8 @@ public class Driver{
         Text.color(Text.BLUE, Text.background(Text.YELLOW));
         Text.go(0,0);
         System.out.print(border);
-
+        Text.go(3,0);
+        System.out.println(sep);
         for (int i = 0 ; i < 30; i++){
             Text.go(i, 0);
             System.out.print(".");
