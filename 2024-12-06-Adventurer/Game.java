@@ -34,9 +34,32 @@ public class Game{
       player = new Archer(userName);
       enemy = new CodeWarrior(enemyName);
     }
-    System.out.println("Player: " + player.getName() + " "  + player.getHP() + "/"  + player.getmaxHP() + " HP "  + player.getSpecial() + "/"  + player.getSpecialMax() + " " + player.getSpecialName() + " " + player.getSpecial() + "/" + player.getSpecialMax());
-    // while(){
-    //   System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
-    // }
+    String playerInfo = "Player: " + player.getName() + " "  + player.getHP() + "/"  + player.getmaxHP() + " HP "  + player.getSpecial() + "/"  + player.getSpecialMax() + " " + player.getSpecialName() + " " + player.getSpecial() + "/" + player.getSpecialMax();
+    String enemyInfo = "Enemy: " + enemy.getName() + " "  + enemy.getHP() + "/"  + enemy.getmaxHP() + " HP "  + enemy.getSpecial() + "/"  + enemy.getSpecialMax() + " " + enemy.getSpecialName() + " " + enemy.getSpecial() + "/" + enemy.getSpecialMax();
+    System.out.println(playerInfo);
+    System.out.println(enemyInfo);
+
+    boolean gameActive = true;
+    while(gameActive){
+      boolean moveNotValid = true;
+      String playerMove = "";
+      while (moveNotValid){
+        System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
+        playerMove = userInput.nextLine();
+        if (playerMove.equals("a") || playerMove.equals("sp") || playerMove.equals("su") || playerMove.equals("quit")){
+          moveNotValid = false;
+        }
+      }
+      if (playerMove.equals("a")){
+        player.attack(enemy);
+      }else if (playerMove.equals("sp")){
+        player.specialAttack(enemy);
+      }else if (playerMove.equals("su")){
+        player.support();
+      }else if (playerMove.equals("quit")){
+        System.out.println(player.getName() + " ran away from the fight! He must be a coward...");
+        break;
+      }
+    }
   }
 }
