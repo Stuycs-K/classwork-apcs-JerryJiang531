@@ -19,21 +19,22 @@ public class Game{
     System.out.println("Enemy name is: " + enemyName);
 
     boolean classNotValid = true;
+    String adventurerClass = "";
     while (classNotValid){
       System.out.println("Play as ___; Type: CodeWarrior/Archer");
-      String class = userInput.nextLine();
-      if (class.equals("CodeWarrior") || class.equals("Archer")){
+      adventurerClass = userInput.nextLine();
+      if (adventurerClass.equals("CodeWarrior") || adventurerClass.equals("Archer")){
         classNotValid = false;
       }
     }
-    if (class.equals("CodeWarrior")){
+    if (adventurerClass.equals("CodeWarrior")){
       player = new CodeWarrior(userName);
       enemy = new Archer(enemyName);
     }else{
       player = new Archer(userName);
       enemy = new CodeWarrior(enemyName);
     }
-    System.out.println("Player: " + player.getName() + " "  + player.getHP() + "/ "  + player.getMaxHP() + "HP "  + player.getSpecial() + "/ "  + player.getSpecialMax() + " " + player.getSpecialName() + " ");
+    System.out.println("Player: " + player.getName() + " "  + player.getHP() + "/"  + player.getmaxHP() + " HP "  + player.getSpecial() + "/"  + player.getSpecialMax() + " " + player.getSpecialName() + " " + player.getSpecial() + "/" + player.getSpecialMax());
     // while(){
     //   System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
     // }
