@@ -49,20 +49,33 @@ public class Game{
           moveNotValid = false;
         }
       }
-
+      // Player's turn
       if (playerMove.equals("quit")){
         System.out.println(player.getName() + " ran away from the fight! He must be a coward...");
         break;
       }else{
         engine(playerMove, player, enemy);
+        System.out.println();
       }
+
       System.out.println("Player : " + getInfo(player));
       System.out.println("Enemy : " + getInfo(enemy));
-      // Enemy's move
+      System.out.println();
+      if (enemy.getHP() < 0){
+        System.out.println(player + " has won the battle!");
+        break;
+      }
+      // Enemy's turn
       String enemyMove = enemyEngine();
       engine(enemyMove, enemy, player);
+      System.out.println();
       System.out.println("Player : " + getInfo(player));
       System.out.println("Enemy : " + getInfo(enemy));
+      System.out.println();
+      if (player.getHP() < 0){
+        System.out.println(enemy + " has won the battle!");
+        gameActive = false;
+      }
 
     }
   }
