@@ -61,7 +61,7 @@ public class Game{
       System.out.println("Player : " + getInfo(player));
       System.out.println("Enemy : " + getInfo(enemy));
       System.out.println();
-      if (enemy.getHP() < 0){
+      if (enemy.getHP() <= 0){
         System.out.println(player + " has won the battle!");
         break;
       }
@@ -72,7 +72,7 @@ public class Game{
       System.out.println("Player : " + getInfo(player));
       System.out.println("Enemy : " + getInfo(enemy));
       System.out.println();
-      if (player.getHP() < 0){
+      if (player.getHP() <= 0){
         System.out.println(enemy + " has won the battle!");
         gameActive = false;
       }
