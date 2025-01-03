@@ -7,7 +7,9 @@ public class makeWords{
       System.out.println(result);
     }else{
       for (int i = 0; i < alphabet.length(); i++){
-        makeWords(remainingLetters -1, result += alphabet.charAt(i), alphabet);
+
+          makeWords(remainingLetters -1, result + alphabet.charAt(i), alphabet);
+
       }
     }
   }
